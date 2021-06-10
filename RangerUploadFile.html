@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="" href="../build/style.css">
+</head>
+<body class="select-none">
+    <div class="flex flex-col sm:flex-row bg-white">
+
+        <h4 class="text-xs cf-segoe-regular text-gray-c1400 mb-2.5">Upload Lead file</h4>
+        <div class="ranger-upload-wrap w-96 flex flex-col">
+            <div class="ranger-upload-btn flex items-center justify-center bg-green-c257985 rounded-md cf-segoe-regular text-sm text-white w-full h-11 relative cursor-pointer">
+                <svg class="transform rotate-180" xmlns="http://www.w3.org/2000/svg" width="11.853" height="11.563" viewBox="0 0 11.853 11.563"><defs><style>.download-a{fill:#fff;}</style></defs><g transform="translate(11.853 11.563) rotate(180)"><g transform="translate(1.312 2.095)"><g transform="translate(0)"><path class="download-a" d="M5.553.414a1.258,1.258,0,0,0-1.862,0L0,4.39l.966.9L4.62,1.345,8.265,5.28l.966-.895Z"></path></g></g><g transform="translate(5.268 2.345)"><rect class="download-a" width="1.317" height="9.219"></rect></g><rect class="download-a" width="11.853" height="1.317"></rect></g></svg>
+
+                <span class="ml-4">Upload</span>
+
+                <input type="file" class="ranger-upload-field cursor-pointer absolute top-0 left-0 w-full h-full opacity-0" name="record_upload_field" multiple="multiple">
+            </div>
+            
+            <span class="ranger-upload-empty-label text-xs text-center hidden">*no file uploaded</span>
+
+            <div class="ranger-upload-file-list mt-3"></div>
+            <input type="hidden" name="record_file_hidden_list" class="ranger-upload-hidden-list">
+        </div>
+        
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            $(".ranger-upload-field").change(function() {
+                $(this).parent().siblings('.ranger-upload-file-list').children().remove();
+                $(this).parent().siblings('.ranger-upload-hidden-list').val('');
+                $(this).parent().siblings('.ranger-upload-empty-label').show();
+
+                var fileObj = $(this).get(0).files;
+                var fileValueBox = $(this).parent().siblings('.ranger-upload-hidden-list');
+                var fileNameArr = [];
+
+                for (var i = 0; i < fileObj.length; ++i) {
+                    var fileName = fileObj[i].name;
+
+                    $(this).parent().siblings('.ranger-upload-file-list').append('<div class="ranger-upload-file-row flex justify-between border-b-4 border-gray-c2100 text-xs cf-segor-regular pb-1 my-2"><div class="flex"><svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="20" viewBox="0 0 17.5 20"><defs><style>.file-icon-a{fill:#007bf5;}</style></defs><path class="file-icon-a" d="M20.5,7.5h0V19.166a.834.834,0,0,1-.832.834H3.832A.833.833,0,0,1,3,19.166V.834A.833.833,0,0,1,3.832,0H13.01a2.308,2.308,0,0,1,1.415.592l5.483,5.483A2.306,2.306,0,0,1,20.5,7.5ZM12.167,7.5V1.667h-7.5V18.333H18.833v-10H13A.831.831,0,0,1,12.167,7.5ZM7.583,11.667a.833.833,0,0,1,.83-.833h6.674a.833.833,0,0,1,0,1.667H8.413A.829.829,0,0,1,7.583,11.667Zm0,3.333a.833.833,0,0,1,.83-.833h6.674a.833.833,0,0,1,0,1.667H8.413A.829.829,0,0,1,7.583,15Zm6.25-8.333h4.31l-4.31-4.31Z" transform="translate(-3)"/></svg><h3 class="ranger-upload-file-name ml-2 w-80">'+ fileName +'</h3></div><span class="form-icons ranger-upload-file-cross cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="17.815" height="17.815" viewBox="0 0 17.815 17.815"><defs><style>.cross-icon-a{fill:#7a7a7a;opacity:0.72;}</style></defs><path class="cross-icon-a" d="M11.738,5.153H7.444V.859A.859.859,0,0,0,6.585,0H6.012a.859.859,0,0,0-.859.859V5.153H.859A.859.859,0,0,0,0,6.012v.573a.859.859,0,0,0,.859.859H5.153v4.295a.859.859,0,0,0,.859.859h.573a.859.859,0,0,0,.859-.859V7.444h4.295a.859.859,0,0,0,.859-.859V6.012A.859.859,0,0,0,11.738,5.153Z" transform="translate(8.908) rotate(45)"/></svg></span></div>');
+                    
+                    fileNameArr.push(fileName);
+                }
+
+                if(fileNameArr.length > 0){
+                    var fileValue = fileValueBox.val();
+
+                    if (fileValue.trim().length > 0) {
+                        var fileArr = fileValue.split(',');
+                        //fileArr.push(fileName);
+                        fileArr.splice(2, 0, ...fileNameArr);
+                        fileValueBox.val(fileArr.join(','));
+                    } else {
+                        fileValueBox.val(fileNameArr.join(','));
+                    }
+                }
+
+                if (fileValueBox.val().trim().length > 0) {
+                    $(this).parent().siblings('.ranger-upload-empty-label').hide();
+                } else {
+                    $(this).parent().siblings('.ranger-upload-empty-label').show();
+                }
+            });
+
+            $(document).on('click', '.ranger-upload-file-cross', function(e){
+                e.preventDefault();
+                var removeEmail = $(this).siblings('.ranger-upload-file-name').text();
+                var emailValueBox = $(this).closest('.ranger-upload-wrap').find('.ranger-upload-hidden-list');
+                var emailValue = emailValueBox.val();
+                var emailArr = emailValue.split(',');
+
+                var index = emailArr.indexOf(removeEmail);
+                emailArr.splice(index, 1);
+                emailValueBox.val(emailArr.join(','));
+
+                //If cross button is from record files
+                //var emailValueBoxData = emailValueBox.attr('data-type');
+                // if (emailValueBoxData === 'c_record_file') {
+                    if (emailValueBox.val().trim().length < 1) {
+                        emailValueBox.siblings('.ranger-upload-empty-label').show();
+
+                        // $('#rr_rf_no').prop('checked', true);
+                        // $('#rr_rec_no').prop('checked', true);
+
+                        //$('#c_record_file').val("");
+                    }
+                // }
+
+                $(this).parent('.ranger-upload-file-row').remove();
+            });
+
+        });
+
+    </script>
+    
+</body>
+</html>

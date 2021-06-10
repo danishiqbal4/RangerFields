@@ -1,0 +1,136 @@
+@tailwind base;
+
+/* @font-face {
+    font-family: 'Regular';
+    src: url('./fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: 'Bold';
+    src: url('./fonts/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: 'ExtraBold';
+    src: url('./fonts/Montserrat-ExtraBold.ttf');
+}
+@font-face {
+    font-family: 'Medium';
+    src: url('./fonts/Montserrat-Medium.ttf');
+}
+@font-face {
+    font-family: 'SemiBold';
+    src: url('./fonts/Montserrat-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'R_Regular';
+    src: url('./fonts/Raleway-Regular.ttf');
+}
+@font-face {
+    font-family: 'R_Bold';
+    src: url('./fonts/Raleway-Bold.ttf');
+}
+@font-face {
+    font-family: 'R_Medium';
+    src: url('./fonts/Raleway-Medium.ttf');
+}
+@font-face {
+    font-family: 'R_Italic';
+    src: url('./fonts/Raleway-Italic.ttf');
+}
+@font-face {
+    font-family: 'R_SemiBold';
+    src: url('./fonts/Raleway-SemiBold.ttf');
+} */
+@font-face {
+    font-family: 'Helvetica';
+    src: url('./fonts/helvetica-neue-lt-std-65-medium.otf');
+}
+/* .cf-hev{
+    font-family: 'Helvetica';
+}
+.cf-regular{
+    font-family: 'Regular';
+}
+.cf-bold{
+    font-family: 'Bold';
+}
+.cf-extrabold{
+    font-family: 'ExtraBold';
+}
+.cf-medium{
+    font-family: 'Medium';
+}
+.cf-semibold{
+    font-family: 'SemiBold';
+}
+.cf-rmedium{
+    font-family: 'SemiBold';
+} */
+.cf-hev{
+    font-family: 'Helvetica';
+}
+.cf-regular{
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+.cf-bold{
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+.cf-extrabold{
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
+.cf-medium{
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+.cf-semibold{
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+.cf-rmedium{
+    font-family: 'Raleway';
+    font-weight: 500;
+}
+.cf-rregular{
+    font-family: 'Raleway';
+    font-weight: 400;
+}
+.cf-rbold{
+    font-family: 'Raleway';
+    font-weight: 700;
+}
+.cf-rextrabold{
+    font-family: 'Raleway';
+    font-weight: 800;
+}
+.cf-rsemibold{
+    font-family: 'Raleway';
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Segoe-UI-Regular';
+    src: url('../fonts/Segoe-UI-Regular.ttf');
+}
+@font-face {
+    font-family: 'Segoe-UI-SemiBold';
+    src: url('../fonts/Segoe-UI-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Segoe-UI-Bold';
+    src: url('../fonts/Segoe-UI-Bold.ttf');
+}
+
+.cf-segoe-regular{
+    font-family: 'Segoe-UI-Regular';
+}
+.cf-segoe-semibold{
+    font-family: 'Segoe-UI-SemiBold';
+}
+.cf-segoe-bold{
+    font-family: 'Segoe-UI-Bold';
+}
+
+@tailwind components;
+@tailwind utilities;

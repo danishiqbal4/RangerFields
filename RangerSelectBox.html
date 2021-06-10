@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="" href="../build/style.css">
+</head>
+<body class="select-none">
+    <div class="flex flex-col sm:flex-row bg-white">
+
+        <div class="ranger-select-wrap relative cf-segor-regular">
+
+            <div class="ranger-select-box flex items-center relative w-40 h-7 bg-white rounded pl-3 cursor-pointer">
+                <span class="ranger-select-selected text-sm">Asset A</span>
+                <svg class="absolute top-3 right-2" xmlns="http://www.w3.org/2000/svg" width="8.72" height="4.607" viewBox="0 0 8.72 4.607"><defs><style>.chev-down-a{fill:#257985;fill-rule:evenodd;}</style></defs><g transform="translate(0 4.607) rotate(-90)"><g transform="translate(4.607 8.72) rotate(180)"><g transform="translate(0 0)"><path class="chev-down-a" d="M.135,7.893a.5.5,0,0,0,0,.685.445.445,0,0,0,.652,0L4.473,4.7a.5.5,0,0,0,0-.685L.787.142a.445.445,0,0,0-.652,0,.5.5,0,0,0,0,.685L3.5,4.36Z" transform="translate(0)"/></g></g></g></svg>
+            </div>
+
+            <ul class="ranger-select-options-box bg-white absolute top-8 left-0 text-xs w-full rounded cursor-pointer shadow hidden">
+                <li class="px-1 py-1.5 hover:bg-gray-300 rounded-tl rounded-tr">Assset A</li>
+                <li class="px-1 py-1.5 hover:bg-gray-300">Assset B</li>
+                <li class="px-1 py-1.5 hover:bg-gray-300">Assset C</li>
+                <li class="px-1 py-1.5 hover:bg-gray-300">Assset D</li>
+                <li class="px-1 py-1.5 hover:bg-gray-300 rounded-bl rounded-br">Assset E</li>
+            </ul>
+
+            <input type="hidden" value="" name="asset_name" class="ranger-select-hidden-value" />
+
+        </div>
+        
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            //Select box code
+            $('.ranger-select-box').click(function(){
+
+                $(this).siblings('.ranger-select-options-box').removeClass('hidden');
+
+            });
+
+            $('.ranger-select-options-box li').click(function(){
+
+                const value = $(this).text();
+
+                $(this).closest('.ranger-select-wrap').find('.ranger-select-selected').text(value);
+                $(this).parent().siblings('.ranger-select-hidden-value').val(value);
+
+                $(this).parent().addClass('hidden');
+
+            });
+
+        });
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="" href="../build/style.css">
+</head>
+<body class="select-none">
+    <div class="flex flex-col sm:flex-row bg-white">
+
+        <div class="ranger-input-wrap flex justify-between items-stretch w-3/12 border border-gray-cDEDEDF rounded">
+            <div class="ranger-pill-wrap w-full text-xs text-gray-c2200 px-1.5 pt-1 cf-segoe-semibold cursor-text">
+                <div class="ranger-pill cursor-default bg-gray-cEEF2F4 px-3.5 py-1.5 mb-1 rounded inline-block mr-0.5">IT</div>
+                <div class="ranger-pill cursor-default bg-gray-cEEF2F4 px-3.5 py-1.5 mb-1 rounded inline-block mr-0.5">Manager</div>
+                <div class="ranger-pill cursor-default bg-gray-cEEF2F4 px-3.5 py-1.5 mb-1 rounded inline-block mr-0.5">IT</div>
+                <input type="text" class="ranger-input-field w-0.5 py-1.5 mb-1 outline-none" />
+            </div>
+            <div class="ranger-plus flex items-center justify-center flex-none w-9 cursor-pointer bg-gray-cEEF2F4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15.756" height="15.756" viewBox="0 0 15.756 15.756"><defs><style>.plus-icon-a{fill:#707070;}</style></defs><path class="plus-icon-a" d="M35.682-38.554H30.31v-5.371A1.075,1.075,0,0,0,29.236-45H28.52a1.075,1.075,0,0,0-1.074,1.074v5.371H22.074A1.075,1.075,0,0,0,21-37.48v.716a1.075,1.075,0,0,0,1.074,1.074h5.371v5.371a1.075,1.075,0,0,0,1.074,1.074h.716a1.075,1.075,0,0,0,1.074-1.074V-35.69h5.371a1.075,1.075,0,0,0,1.074-1.074v-.716A1.075,1.075,0,0,0,35.682-38.554Z" transform="translate(-21 45)"/></svg>
+            </div>
+            <input type="hidden" class="ranger-input-value" />
+        </div>
+        
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            //Ranger TextBox Code
+            $('.ranger-pill-wrap').click(function(){
+
+                $(this).children('.ranger-input-field').focus();
+
+            });
+
+            $('.ranger-input-field').keydown(function(e){
+
+                if(e.key == 'Backspace'){
+                    if($(this).val().trim() == ''){
+                        $(this).prev().remove();
+
+                        setRangerInputValue($(this).closest('.ranger-input-wrap'));
+                    }
+                } else if(e.key == 'Delete'){
+                    if($(this).val().trim() == ''){
+                        $(this).next().remove();
+
+                        setRangerInputValue($(this).closest('.ranger-input-wrap'));
+                    }
+                }
+
+            });
+
+            $('.ranger-input-field').keyup(function(e){
+                e.preventDefault();
+
+                if(e.key == 'Enter'){
+
+                } else if(e.key == 'ArrowLeft'){
+
+                    if($(this).val() == ''){
+                    $(this).insertBefore($(this).prev()).focus();
+                }
+
+                } else if(e.key == 'ArrowRight'){
+
+                    if($(this).val() == ''){
+                    $(this).insertAfter($(this).next()).focus();
+
+                } else if(e.key == 'Backspace'){
+
+                    // if($(this).val().trim() == ''){
+                    //     $(this).prev().remove();
+                    // }
+
+                } else {
+
+                    const text = $(this).val();
+                    const textWidth = getTextWidth(text);
+                    $(this).css('width', textWidth);
+
+                }
+
+            });
+
+            $('.ranger-plus').click(function(){
+
+                const $input = $(this).siblings('.ranger-pill-wrap').children('.ranger-input-field');
+
+                if($input.val().trim() == ''){
+                    $input.focus();
+                    return false;
+                }
+
+                const html = '<div class="ranger-pill cursor-default bg-gray-cEEF2F4 px-3.5 py-1.5 mb-1 rounded inline-block mr-0.5">'+$input.val()+'</div>';
+
+                $(html).insertBefore($input);
+                $input.val('').css('width', '4px').focus();
+
+                setRangerInputValue($(this).closest('.ranger-input-wrap'));
+
+            });
+
+        });
+
+        function setText($input, key){
+            const text = $input.val() + key;
+            const textWidth = getTextWidth(text);
+            $input.css('width', textWidth);
+            $input.val(text);
+        }
+
+        function getTextWidth(text){
+            let div = document.createElement('div');
+            div.innerHTML = text;
+            div.classList.add('cf-segoe-semibold');
+            div.style.fontSize = '12px';
+            div.style.width = 'auto';
+            div.style.display = 'inline-block';
+            div.style.visibility = 'hidden';
+            div.style.position = 'fixed';
+            div.style.overflow = 'auto';
+            document.body.append(div)
+            let width = div.clientWidth;
+            if(width < 2){
+                width = 2;
+            }
+            div.remove();
+            return width;
+        }
+
+        function setRangerInputValue($RangerInputWrap){
+
+            let valueArray = [];
+
+            $RangerInputWrap.find('.ranger-pill').each(function(){
+
+                valueArray.push($(this).text());
+
+            });
+
+            $RangerInputWrap.children('.ranger-input-value').val(valueArray.join());
+
+        }
+
+    </script>
+    
+</body>
+</html>
