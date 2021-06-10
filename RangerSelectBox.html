@@ -8,6 +8,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" type="" href="../build/style.css">
+
+    <style>
+        .cust-scroll::-webkit-scrollbar-thumb {
+            background-color: #AAAAAA;
+            border-radius: 4px;
+        }
+        .cust-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+    </style>
 </head>
 <body class="select-none">
     <div class="flex flex-col sm:flex-row bg-white">
@@ -19,7 +29,7 @@
                 <svg class="absolute top-3 right-2" xmlns="http://www.w3.org/2000/svg" width="8.72" height="4.607" viewBox="0 0 8.72 4.607"><defs><style>.chev-down-a{fill:#257985;fill-rule:evenodd;}</style></defs><g transform="translate(0 4.607) rotate(-90)"><g transform="translate(4.607 8.72) rotate(180)"><g transform="translate(0 0)"><path class="chev-down-a" d="M.135,7.893a.5.5,0,0,0,0,.685.445.445,0,0,0,.652,0L4.473,4.7a.5.5,0,0,0,0-.685L.787.142a.445.445,0,0,0-.652,0,.5.5,0,0,0,0,.685L3.5,4.36Z" transform="translate(0)"/></g></g></g></svg>
             </div>
 
-            <ul class="ranger-select-options-box bg-white absolute top-8 left-0 text-xs w-full rounded cursor-pointer shadow hidden">
+            <ul class="ranger-select-options-box bg-white absolute top-8 left-0 text-xs w-full rounded cursor-pointer shadow hidden max-h-32 overflow-y-scroll cust-scroll">
                 <li class="px-1 py-1.5 hover:bg-gray-300 rounded-tl rounded-tr">Assset A</li>
                 <li class="px-1 py-1.5 hover:bg-gray-300">Assset B</li>
                 <li class="px-1 py-1.5 hover:bg-gray-300">Assset C</li>
@@ -37,7 +47,12 @@
         $(document).ready(function(){
 
             //Select box code
-            $('.ranger-select-box').click(function(){
+            $('body').click(function(){
+                $('.ranger-select-options-box').addClass('hidden');
+            });
+
+            $('.ranger-select-box').click(function(e){
+                e.stopPropagation();
 
                 $(this).siblings('.ranger-select-options-box').removeClass('hidden');
 
