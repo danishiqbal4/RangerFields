@@ -7,7 +7,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="" href="../build/style.css">
+    <link rel="stylesheet" type="" href="./build/style.css">
 </head>
 <body class="select-none">
     <div class="flex flex-col sm:flex-row bg-white">
@@ -63,13 +63,14 @@
                 } else if(e.key == 'ArrowLeft'){
 
                     if($(this).val() == ''){
-                    $(this).insertBefore($(this).prev()).focus();
-                }
+                        $(this).insertBefore($(this).prev()).focus();
+                    }
 
                 } else if(e.key == 'ArrowRight'){
 
                     if($(this).val() == ''){
-                    $(this).insertAfter($(this).next()).focus();
+                        $(this).insertAfter($(this).next()).focus();
+                    }
 
                 } else if(e.key == 'Backspace'){
 
