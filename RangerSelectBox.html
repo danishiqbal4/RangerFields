@@ -7,7 +7,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="" href="../build/style.css">
+    <link rel="stylesheet" type="" href="./build/style.css">
 
     <style>
         .cust-scroll::-webkit-scrollbar-thumb {
@@ -54,7 +54,7 @@
             $('.ranger-select-box').click(function(e){
                 e.stopPropagation();
 
-                $(this).siblings('.ranger-select-options-box').removeClass('hidden');
+                $(this).siblings('.ranger-select-options-box').toggleClass('hidden');
 
             });
 
