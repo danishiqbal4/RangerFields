@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="" href="./build/style.css">
+</head>
+<body class="select-none">
+
+    <div class="ranger-toggle-wrap relative w-20 bg-purple-dark rounded-full flex items-center justify-between p-px mr-4">
+        <span class="mt-0.5 active text-xxsl text-white pl-2">Active</span>
+        <div class="h-6 w-6 rounded-full bg-white inner_circle"></div>
+        <input type="checkbox" name="specification" class="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer ranger-toggle" value="SpecificationYes" checked="">
+        <span class="mt-0.5 hidden inactive text-xxsl text-white pr-2">Inactive</span>
+    </div>
+
+    <script>
+
+        //Toggle code
+        $(document).on('click', '.ranger-toggle', function(e){
+
+            e.stopPropagation();
+
+            const check = $(this).prop('checked');
+
+            if( check ){
+                //Active
+
+                $(this).parent().removeClass('bg-gray-c800').addClass('bg-purple-dark');
+
+                $(this).siblings('.active').removeClass('hidden');
+                $(this).siblings('.inactive').addClass('hidden');
+
+            }else{
+                //Inactive
+
+                $(this).parent().addClass('bg-gray-c800').removeClass('bg-purple-dark');
+
+                $(this).siblings('.active').addClass('hidden');
+                $(this).siblings('.inactive').removeClass('hidden');
+            }
+
+        });
+
+    </script>
+    
+</body>
+</html>

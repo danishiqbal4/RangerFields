@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="" href="./build/style.css">
+</head>
+<body class="select-none">
+
+    <div class="ranger-checkbox-wrap relative h-4 w-4 mr-4 bg-transparent border border-purple-light rounded-sm text-transparent flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+            <defs><style></style></defs>
+            <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+        </svg>
+        <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+        <input type="checkbox" name="campaign" value="campaign_2" class=" bg-transparent h-full w-full opacity-0 ranger-checkbox absolute top-0 left-0 cursor-pointer">
+    </div>
+
+    <script>
+
+        //Checkbox code 
+        $(document).on('click', '.ranger-checkbox', function(e){
+            e.stopPropagation();
+
+            const check = $(this).is(':checked');
+
+            $(this).parent().toggleClass('text-white bg-purple-light');
+
+            if(check){
+                $(this).closest('.ranger-checkbox-wrap').addClass('bg-white');
+            } else {
+                $(this).closest('.ranger-checkbox-wrap').removeClass('bg-white');
+
+                $('.ranger-check-all').prop('checked', false);
+                $('.ranger-check-all').parent().removeClass('text-white bg-purple-light');
+            }
+        });
+
+    </script>
+    
+</body>
+</html>
