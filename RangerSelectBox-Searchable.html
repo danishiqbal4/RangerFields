@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="" href="./build/style.css">
+
+    <style>
+        .cust-scroll::-webkit-scrollbar-thumb {
+            background-color: #AAAAAA;
+            border-radius: 4px;
+        }
+        .cust-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+    </style>
+</head>
+<body class="select-none">
+    <div class="flex flex-col sm:flex-row bg-white">
+
+        <div class="ranger-select-wrap text-gray-c900 relative cf-regular border rounded">
+
+            <div class="ranger-select-box flex items-center relative w-40 h-7 bg-white rounded pl-3 cursor-pointer">
+                <span class="ranger-select-selected text-sm">Agent's Name</span>
+                <svg class="absolute top-3 right-2" xmlns="http://www.w3.org/2000/svg" width="8.72" height="4.607" viewBox="0 0 8.72 4.607"><defs><style>.chev-down-a{fill:#ababab;fill-rule:evenodd;}</style></defs><g transform="translate(0 4.607) rotate(-90)"><g transform="translate(4.607 8.72) rotate(180)"><g transform="translate(0 0)"><path class="chev-down-a" d="M.135,7.893a.5.5,0,0,0,0,.685.445.445,0,0,0,.652,0L4.473,4.7a.5.5,0,0,0,0-.685L.787.142a.445.445,0,0,0-.652,0,.5.5,0,0,0,0,.685L3.5,4.36Z" transform="translate(0)"></path></g></g></g></svg>
+            </div>
+            
+            <div class="ranger-select-options-box bg-white absolute top-8 left-0 text-xs w-full rounded shadow hidden">
+                <div class="flex items-center bg-gray-c2100 px-1 py-0.5 rounded-tl-sm rounded-tr-sm ranger-select-search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="9.996" height="10.019" viewBox="0 0 9.996 10.019"><path d="M-73.712,17.268l-2.068-2.055a4.276,4.276,0,0,0,.873-2.607,4.311,4.311,0,0,0-4.316-4.329,4.32,4.32,0,0,0-4.316,4.329,4.317,4.317,0,0,0,4.316,4.316,4.359,4.359,0,0,0,2.607-.873l2.055,2.068a.6.6,0,0,0,.411.18.575.575,0,0,0,.411-.18A.583.583,0,0,0-73.712,17.268Zm-8.631-4.662a3.13,3.13,0,0,1,3.134-3.134,3.13,3.13,0,0,1,3.134,3.134,3.13,3.13,0,0,1-3.147,3.121A3.116,3.116,0,0,1-82.343,12.606Z" transform="translate(83.538 -8.277)"></path></svg>
+                    <input type="text" autocomplete="off" class="h-6 w-full bg-gray-c2100 text-xs text-black-c000000 p-1 focus:outline-none ranger-select-search" placeholder="Search Here....">
+                </div>                       
+                <ul class="ranger-select-options cursor-pointer max-h-32 overflow-y-scroll cust-scroll">
+                    <li class="px-1 py-1.5 hover:bg-gray-300 rounded-tl rounded-tr">Danish Iqbal</li>
+                    <li class="px-1 py-1.5 hover:bg-gray-300">Sajal</li>
+                    <li class="px-1 py-1.5 hover:bg-gray-300">Zuhaib</li>
+                    <li class="px-1 py-1.5 hover:bg-gray-300">Shailandra</li>
+                    <li class="px-1 py-1.5 hover:bg-gray-300 rounded-bl rounded-br">Danish Iqbal</li>
+                </ul>
+            </div>
+
+            <input type="hidden" value="" name="agent_name" class="ranger-select-hidden-value">
+
+        </div>
+        
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            //Select box code
+            $('body').click(function(){
+                $('.ranger-select-options-box').addClass('hidden');
+                $('.ranger-select-search').val('');
+                $('.ranger-select-options').children('li').removeClass('hidden');
+            });
+
+            $('.ranger-select-box').click(function(e){
+                e.stopPropagation();
+
+                $(this).siblings('.ranger-select-options-box').toggleClass('hidden');
+                $(this).parent('.ranger-select-wrap').find('.ranger-select-search').focus();
+
+            });
+
+            $('.ranger-select-options-box').click(function(e){
+                e.stopPropagation();
+
+            });
+
+            $('.ranger-select-options-box li').click(function(){
+
+                const value = $(this).text();
+
+                $(this).closest('.ranger-select-wrap').find('.ranger-select-selected').text(value);
+                $(this).parent().siblings('.ranger-select-hidden-value').val(value);
+
+                $(this).closest('.ranger-select-options-box').addClass('hidden');
+                $(this).closest('.ranger-select-options-box').find('.ranger-select-search').val('');
+                $(this).parent().children().removeClass('hidden');
+
+            });
+
+            $('.ranger-select-search').keyup(function(e){
+
+                e.preventDefault();
+
+                const searchQuery = $(this).val().trim().toLowerCase();
+
+                const $list = $('.ranger-select-options li');
+
+                $list.each(function(){
+                    const label = $(this).text().toLowerCase();
+                    
+                    if(label.includes(searchQuery)){
+                        $(this).removeClass('hidden');
+                    } else {
+                        $(this).addClass('hidden');
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+    
+</body>
+</html>
