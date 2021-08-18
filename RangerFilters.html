@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!--Plugin CSS file with desired skin-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+
+    <link rel="stylesheet" type="" href="./build/style.css">
+    <link rel="stylesheet" type="" href="./css/common.css">
+    <link rel="stylesheet" type="" href="./css/ranger-range-slider.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>  
+
+    <script src="./js/filter.js"></script>
+
+</head>
+<body class="select-none">
+
+    <!-- Filter -->
+    <div class="flex flex-col w-full rounded-2xl shadow-md bg-white my-9 suspend-fade filter-wrap">
+
+        <div class="filter-box flex flex-row border-b rounded-2xl">
+            <div class="w-full">
+                <div class="px-8 py-5 flex">
+                    <div class="filter-box-wrap flex z-20">
+                        
+                        <!-- ID of the BOX is unique -->
+                        <div id="filter-box-disposition" class="relative filter-boxes mr-4 filter-boxes hidden order-last">
+                            <div class="filter-pill hidden">
+                                <div class="flex justify-between items-center pl-3 pr-2 py-2 rounded-lg border border-gray-ccbcbcb bg-gray-ce8e8e8 w-40">
+                                    <!-- Title of Filter Pill -->
+                                    <p class="cf-segoe-regular text-xxsl mr-2">Email</p>
+                                    <div class="flex">
+                                        <div class="fp-edit p-1 rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer mr-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7.144 7.145"><defs><style>.fp-edit-a{fill:#fff;}</style></defs><g transform="translate(-17.208 -2.879)"><path class="fp-edit-a" d="M22.976,2.84a1.33,1.33,0,0,0-.946.391L17.54,7.721l1.893,1.893,4.489-4.489a1.339,1.339,0,0,0-.947-2.285ZM17.308,8.12l-.137,1.622a.223.223,0,0,0,.241.241l1.621-.138Z" transform="translate(0.038 0.038)"/></g></svg>
+                                        </div>
+                                        <div class="fp-remove rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer w-4 h-4 p-0.5 transform rotate-45">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 9.068 9.068"><defs><style>.fp-remove-a{fill:#fff;}</style></defs><path class="fp-remove-a" d="M8.45,3.71H5.358V.618A.618.618,0,0,0,4.74,0H4.328A.618.618,0,0,0,3.71.618V3.71H.618A.618.618,0,0,0,0,4.328V4.74a.618.618,0,0,0,.618.618H3.71V8.45a.618.618,0,0,0,.618.618H4.74a.618.618,0,0,0,.618-.618V5.358H8.45a.618.618,0,0,0,.618-.618V4.328A.618.618,0,0,0,8.45,3.71Z"/></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-card w-56 bg-white absolute shadow-lg rounded-bl-lg rounded-br-lg">
+                                <div class="fcard-header bg-purple-light flex justify-between items-center py-2 px-4 text-white rounded-tl-lg rounded-tr-lg">
+                                    <!-- Title of Card -->
+                                    <p class="cf-segoe-semibold text-sm">Email Id</p>
+                                    <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
+                                </div>
+                                <div class="fcard-body px-3 pt-5">
+                                    <div class="fc-input relative">
+                                        <input class="w-full py-1 px-9 border border-gray-200 rounded-md fcard-search-box" type="text">
+                                        <div class="absolute h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center top-2 ml-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                <defs><style></style></defs>
+                                                <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                            </svg>
+                                            <!-- Name attribute of the all checkbox of this card is unique -->
+                                            <input type="checkbox" value="" name="email_all" class="cf-check-all bg-transparent h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer">
+                                        </div>
+                                        <div class="cursor-pointer absolute right-2 svg-cont transform rotate-180 w-5 h-5 top-2">
+                                            <svg class="inline-block ml-1 mb-2 transform" xmlns="http://www.w3.org/2000/svg" width="8.165" height="4.314" viewBox="0 0 8.165 4.314"><defs><style>.a{fill:#823bee;fill-rule:evenodd;}</style></defs><g transform="translate(10.269 -1.111) rotate(90)"><g transform="translate(5.426 10.269) rotate(180)"><path class="a" d="M.126,7.391a.471.471,0,0,0,0,.642.417.417,0,0,0,.61,0L4.188,4.4a.471.471,0,0,0,0-.642L.737.133a.417.417,0,0,0-.61,0,.471.471,0,0,0,0,.642L3.273,4.083Z"/></g></g></svg>
+                                        </div>
+                                    </div>
+                                    <div class="fc-options hidden relative">
+                                        <ul class="value-container check-container max-h-56 w-full overflow-y-scroll top-1 left-0 shadow-lg rounded-lg bg-gray-c700 z-50 absolute cursor-pointer">
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="email" value="email_1" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">email@email.com</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="email" value="email_2" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">email@email.com</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="email" value="email_3" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">email@test.com</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="email" value="email_4" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">email@email.com</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="email" value="email_5" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">email@email.com</label>
+                                            </li>
+
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="email" value="email_6" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">email@email.com</label>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="fcard-footer text-right py-4 px-3 flex items-center justify-between">
+                                    <div class="text-xs flex">
+                                        <span class="text-white bg-purple-light rounded-full w-5 h-5 flex items-center justify-center mr-1 fcard-options-sel-total">0</span> options selected
+                                    </div>
+                                    <!-- Title of apply button will remain same -->
+                                    <span class="bg-purple-light text-white cf-segoe-semibold text-sm cursor-pointer py-1 px-4 rounded-full fc-apply">Apply</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- ID of the BOX is unique -->
+                        <div id="filter-box-campaign" class="relative filter-boxes mr-4 filter-boxes hidden order-last">
+                            <div class="filter-pill hidden">
+                                <div class="flex justify-between items-center pl-3 pr-2 py-2 rounded-lg border border-gray-ccbcbcb bg-gray-ce8e8e8 w-40">
+                                    <!-- Title of Filter Pill -->
+                                    <p class="cf-segoe-regular text-xxsl mr-2">Campaign</p>
+                                    <div class="flex">
+                                        <div class="fp-edit p-1 rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer mr-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7.144 7.145"><defs><style>.fp-edit-a{fill:#fff;}</style></defs><g transform="translate(-17.208 -2.879)"><path class="fp-edit-a" d="M22.976,2.84a1.33,1.33,0,0,0-.946.391L17.54,7.721l1.893,1.893,4.489-4.489a1.339,1.339,0,0,0-.947-2.285ZM17.308,8.12l-.137,1.622a.223.223,0,0,0,.241.241l1.621-.138Z" transform="translate(0.038 0.038)"/></g></svg>
+                                        </div>
+                                        <div class="fp-remove rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer w-4 h-4 p-0.5 transform rotate-45">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 9.068 9.068"><defs><style>.fp-remove-a{fill:#fff;}</style></defs><path class="fp-remove-a" d="M8.45,3.71H5.358V.618A.618.618,0,0,0,4.74,0H4.328A.618.618,0,0,0,3.71.618V3.71H.618A.618.618,0,0,0,0,4.328V4.74a.618.618,0,0,0,.618.618H3.71V8.45a.618.618,0,0,0,.618.618H4.74a.618.618,0,0,0,.618-.618V5.358H8.45a.618.618,0,0,0,.618-.618V4.328A.618.618,0,0,0,8.45,3.71Z"/></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-card w-72 bg-white absolute shadow-lg rounded-bl-lg rounded-br-lg">
+                                <div class="fcard-header bg-purple-light flex justify-between items-center py-2 px-4 text-white rounded-tl-lg rounded-tr-lg">
+                                    <!-- Title of Card -->
+                                    <p class="cf-segoe-semibold text-sm">Campaign Name</p>
+                                    <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
+                                </div>
+                                <div class="fcard-body px-3 pt-5">
+                                    <div class="fc-input relative">
+                                        <input class="w-full py-1 px-9 border border-gray-200 rounded-md fcard-search-box" type="text">
+                                        <div class="absolute h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center top-2 ml-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                <defs><style></style></defs>
+                                                <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                            </svg>
+                                            <!-- Name attribute of the all checkbox of this card is unique -->
+                                            <input type="checkbox" value="" name="campaign_all" class="cf-check-all bg-transparent h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer">
+                                        </div>
+                                        <div class="cursor-pointer absolute right-2 svg-cont transform rotate-180 w-5 h-5 top-2">
+                                            <svg class="inline-block ml-1 mb-2 transform" xmlns="http://www.w3.org/2000/svg" width="8.165" height="4.314" viewBox="0 0 8.165 4.314"><defs><style>.a{fill:#823bee;fill-rule:evenodd;}</style></defs><g transform="translate(10.269 -1.111) rotate(90)"><g transform="translate(5.426 10.269) rotate(180)"><path class="a" d="M.126,7.391a.471.471,0,0,0,0,.642.417.417,0,0,0,.61,0L4.188,4.4a.471.471,0,0,0,0-.642L.737.133a.417.417,0,0,0-.61,0,.471.471,0,0,0,0,.642L3.273,4.083Z"/></g></g></svg>
+                                        </div>
+                                    </div>
+                                    <div class="fc-options hidden relative">
+                                        <ul class="value-container check-container max-h-56 w-full overflow-y-scroll top-1 left-0 shadow-lg rounded-lg bg-gray-c700 z-50 absolute cursor-pointer">
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="campaign" value="campaign_1" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Campaign 1</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="campaign" value="campaign_2" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Campaign 2</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="campaign" value="campaign_3" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Campaign 3</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="campaign" value="campaign_4" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Campaign 4</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="campaign" value="campaign_5" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Campaign 5</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="campaign" value="campaign_6" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Campaign 6</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="fcard-footer text-right py-4 px-3 flex items-center justify-between">
+                                    <div class="text-xs flex">
+                                        <span class="text-white bg-purple-light rounded-full w-5 h-5 flex items-center justify-center mr-1 fcard-options-sel-total">0</span> options selected
+                                    </div>
+                                    <!-- Title of apply button will remain same -->
+                                    <span class="bg-purple-light text-white cf-segoe-semibold text-sm cursor-pointer py-1 px-4 rounded-full fc-apply">Apply</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- ID of the BOX is unique -->
+                        <div id="filter-box-agent" class="relative filter-boxes mr-4 filter-boxes hidden order-last">
+                            <div class="filter-pill hidden">
+                                <div class="flex justify-between items-center pl-3 pr-2 py-2 rounded-lg border border-gray-ccbcbcb bg-gray-ce8e8e8 w-40">
+                                    <!-- Title of Filter Pill -->
+                                    <p class="cf-segoe-regular text-xxsl mr-2">Agent</p>
+                                    <div class="flex">
+                                        <div class="fp-edit p-1 rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer mr-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7.144 7.145"><defs><style>.fp-edit-a{fill:#fff;}</style></defs><g transform="translate(-17.208 -2.879)"><path class="fp-edit-a" d="M22.976,2.84a1.33,1.33,0,0,0-.946.391L17.54,7.721l1.893,1.893,4.489-4.489a1.339,1.339,0,0,0-.947-2.285ZM17.308,8.12l-.137,1.622a.223.223,0,0,0,.241.241l1.621-.138Z" transform="translate(0.038 0.038)"/></g></svg>
+                                        </div>
+                                        <div class="fp-remove rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer w-4 h-4 p-0.5 transform rotate-45">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 9.068 9.068"><defs><style>.fp-remove-a{fill:#fff;}</style></defs><path class="fp-remove-a" d="M8.45,3.71H5.358V.618A.618.618,0,0,0,4.74,0H4.328A.618.618,0,0,0,3.71.618V3.71H.618A.618.618,0,0,0,0,4.328V4.74a.618.618,0,0,0,.618.618H3.71V8.45a.618.618,0,0,0,.618.618H4.74a.618.618,0,0,0,.618-.618V5.358H8.45a.618.618,0,0,0,.618-.618V4.328A.618.618,0,0,0,8.45,3.71Z"/></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-card w-72 bg-white absolute shadow-lg rounded-bl-lg rounded-br-lg">
+                                <div class="fcard-header bg-purple-light flex justify-between items-center py-2 px-4 text-white rounded-tl-lg rounded-tr-lg">
+                                    <!-- Title of Card -->
+                                    <p class="cf-segoe-semibold text-sm">Agent Name</p>
+                                    <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
+                                </div>
+                                <div class="fcard-body px-3 pt-5">
+                                    <div class="fc-input relative">
+                                        <input class="w-full py-1 px-9 border border-gray-200 rounded-md fcard-search-box" type="text">
+                                        <div class="absolute h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center top-2 ml-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                <defs><style></style></defs>
+                                                <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                            </svg>
+                                            <!-- Name attribute of the all checkbox of this card is unique -->
+                                            <input type="checkbox" value="" name="agent_all" class="cf-check-all bg-transparent h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer">
+                                        </div>
+                                        <div class="cursor-pointer absolute right-2 svg-cont transform rotate-180 w-5 h-5 top-2">
+                                            <svg class="inline-block ml-1 mb-2 transform" xmlns="http://www.w3.org/2000/svg" width="8.165" height="4.314" viewBox="0 0 8.165 4.314"><defs><style>.a{fill:#823bee;fill-rule:evenodd;}</style></defs><g transform="translate(10.269 -1.111) rotate(90)"><g transform="translate(5.426 10.269) rotate(180)"><path class="a" d="M.126,7.391a.471.471,0,0,0,0,.642.417.417,0,0,0,.61,0L4.188,4.4a.471.471,0,0,0,0-.642L.737.133a.417.417,0,0,0-.61,0,.471.471,0,0,0,0,.642L3.273,4.083Z"/></g></g></svg>
+                                        </div>
+                                    </div>
+                                    <div class="fc-options hidden relative">
+                                        <ul class="value-container check-container max-h-56 w-full overflow-y-scroll top-1 left-0 shadow-lg rounded-lg bg-gray-c700 z-50 absolute cursor-pointer">
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="agent" value="agent_1" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Agent 1</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="agent" value="agent_2" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Agent 2</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="agent" value="agent_3" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Agent 3</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="agent" value="agent_4" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Agent 4</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="agent" value="agent_5" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Agent 5</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="agent" value="agent_6" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">Agent 6</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="fcard-footer text-right py-4 px-3 flex items-center justify-between">
+                                    <div class="text-xs flex">
+                                        <span class="text-white bg-purple-light rounded-full w-5 h-5 flex items-center justify-center mr-1 fcard-options-sel-total">0</span> options selected
+                                    </div>
+                                    <!-- Title of apply button will remain same -->
+                                    <span class="bg-purple-light text-white cf-segoe-semibold text-sm cursor-pointer py-1 px-4 rounded-full fc-apply">Apply</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- ID of the BOX is unique -->
+                        <div id="filter-box-status" class="relative filter-boxes mr-4 filter-boxes hidden order-last">
+                            <div class="filter-pill hidden">
+                                <div class="flex justify-between items-center pl-3 pr-2 py-2 rounded-lg border border-gray-ccbcbcb bg-gray-ce8e8e8 w-40">
+                                    <!-- Title of Filter Pill -->
+                                    <p class="cf-segoe-regular text-xxsl mr-2">Rating</p>
+                                    <div class="flex">
+                                        <div class="fp-edit p-1 rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer mr-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7.144 7.145"><defs><style>.fp-edit-a{fill:#fff;}</style></defs><g transform="translate(-17.208 -2.879)"><path class="fp-edit-a" d="M22.976,2.84a1.33,1.33,0,0,0-.946.391L17.54,7.721l1.893,1.893,4.489-4.489a1.339,1.339,0,0,0-.947-2.285ZM17.308,8.12l-.137,1.622a.223.223,0,0,0,.241.241l1.621-.138Z" transform="translate(0.038 0.038)"/></g></svg>
+                                        </div>
+                                        <div class="fp-remove rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer w-4 h-4 p-0.5 transform rotate-45">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 9.068 9.068"><defs><style>.fp-remove-a{fill:#fff;}</style></defs><path class="fp-remove-a" d="M8.45,3.71H5.358V.618A.618.618,0,0,0,4.74,0H4.328A.618.618,0,0,0,3.71.618V3.71H.618A.618.618,0,0,0,0,4.328V4.74a.618.618,0,0,0,.618.618H3.71V8.45a.618.618,0,0,0,.618.618H4.74a.618.618,0,0,0,.618-.618V5.358H8.45a.618.618,0,0,0,.618-.618V4.328A.618.618,0,0,0,8.45,3.71Z"/></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-card w-56 bg-white absolute shadow-lg rounded-bl-lg rounded-br-lg">
+                                <div class="fcard-header bg-purple-light flex justify-between items-center py-2 px-4 text-white rounded-tl-lg rounded-tr-lg">
+                                    <!-- Title of Card -->
+                                    <p class="cf-segoe-semibold text-sm">Rating</p>
+                                    <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
+                                </div>
+                                <div class="fcard-body px-3 pt-5">
+                                    <div class="fc-input relative">
+                                        <input class="w-full py-1 px-9 border border-gray-200 rounded-md fcard-search-box" type="text">
+                                        <div class="absolute h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center top-2 ml-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                <defs><style></style></defs>
+                                                <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                            </svg>
+                                            <!-- Name attribute of the all checkbox of this card is unique -->
+                                            <input type="checkbox" value="" name="rating_all" class="cf-check-all bg-transparent h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer">
+                                        </div>
+                                        <div class="cursor-pointer absolute right-2 svg-cont transform rotate-180 w-5 h-5 top-2">
+                                            <svg class="inline-block ml-1 mb-2 transform" xmlns="http://www.w3.org/2000/svg" width="8.165" height="4.314" viewBox="0 0 8.165 4.314"><defs><style>.a{fill:#823bee;fill-rule:evenodd;}</style></defs><g transform="translate(10.269 -1.111) rotate(90)"><g transform="translate(5.426 10.269) rotate(180)"><path class="a" d="M.126,7.391a.471.471,0,0,0,0,.642.417.417,0,0,0,.61,0L4.188,4.4a.471.471,0,0,0,0-.642L.737.133a.417.417,0,0,0-.61,0,.471.471,0,0,0,0,.642L3.273,4.083Z"/></g></g></svg>
+                                        </div>
+                                    </div>
+                                    <div class="fc-options hidden relative">
+                                        <ul class="value-container check-container h-auto w-full overflow-y-scroll top-1 left-0 shadow-lg rounded-lg bg-gray-c700 z-50 absolute cursor-pointer">
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="rating" value="1" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">1</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="rating" value="2" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">2</label>
+                                            </li>
+    
+                                            <li class="flex flex-row items-center h-11 w-full hover:bg-white px-2">
+                                                <div class="relative h-5 w-5 mr-4 bg-transparent border border-gray-c300 rounded-sm text-transparent flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11.27" height="9.049" viewBox="0 0 11.27 9.049" class="fill-current stroke-current">
+                                                        <defs><style></style></defs>
+                                                        <path d="M5.471,19.99a.6.6,0,0,1,0-.842l.125-.125a.6.6,0,0,1,.842,0l2.186,2.186,5.737-5.737a.6.6,0,0,1,.842,0l.125.125a.6.6,0,0,1,0,.842L11,20.768,8.624,23.143Z" transform="translate(-4.8 -14.801)"></path>
+                                                    </svg>
+                                                    <!-- Name attribute of options checkbox in each card will be same. Only the value will change -->
+                                                    <input type="checkbox" name="rating" value="3" class=" bg-transparent h-full w-full opacity-0 custcheck absolute top-0 left-0 cursor-pointer">
+                                                </div>
+                                                <!-- Label will change for each checkbox option for each card -->
+                                                <label class="cf-segoe-semibold text-sm text-gray-c1400 2xl:text-base cursor-pointer">3</label>
+                                            </li>
+    
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="fcard-footer text-right py-4 px-3 flex items-center justify-between">
+                                    <div class="text-xs flex">
+                                        <span class="text-white bg-purple-light rounded-full w-5 h-5 flex items-center justify-center mr-1 fcard-options-sel-total">0</span> options selected
+                                    </div>
+                                    <!-- Title of apply button will remain same -->
+                                    <span class="bg-purple-light text-white cf-segoe-semibold text-sm cursor-pointer py-1 px-4 rounded-full fc-apply">Apply</span>
+                                </div>
+                            </div>
+                        </div>                                
+    
+                        <!-- ID of the BOX is unique -->
+                        <div id="filter-box-date" class="relative filter-boxes mr-4 filter-boxes hidden order-last">
+                            <div class="filter-pill hidden">
+                                <div class="flex justify-between items-center pl-3 pr-2 py-2 rounded-lg border border-gray-ccbcbcb bg-gray-ce8e8e8 w-40">
+                                    <!-- Title of Filter Pill -->
+                                    <p class="cf-segoe-regular text-xxsl mr-2">Date</p>
+                                    <div class="flex">
+                                        <div class="fp-edit p-1 rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer mr-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7.144 7.145"><defs><style>.fp-edit-a{fill:#fff;}</style></defs><g transform="translate(-17.208 -2.879)"><path class="fp-edit-a" d="M22.976,2.84a1.33,1.33,0,0,0-.946.391L17.54,7.721l1.893,1.893,4.489-4.489a1.339,1.339,0,0,0-.947-2.285ZM17.308,8.12l-.137,1.622a.223.223,0,0,0,.241.241l1.621-.138Z" transform="translate(0.038 0.038)"/></g></svg>
+                                        </div>
+                                        <div class="fp-remove rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer w-4 h-4 p-0.5 transform rotate-45">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 9.068 9.068"><defs><style>.fp-remove-a{fill:#fff;}</style></defs><path class="fp-remove-a" d="M8.45,3.71H5.358V.618A.618.618,0,0,0,4.74,0H4.328A.618.618,0,0,0,3.71.618V3.71H.618A.618.618,0,0,0,0,4.328V4.74a.618.618,0,0,0,.618.618H3.71V8.45a.618.618,0,0,0,.618.618H4.74a.618.618,0,0,0,.618-.618V5.358H8.45a.618.618,0,0,0,.618-.618V4.328A.618.618,0,0,0,8.45,3.71Z"/></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-card w-56 bg-white absolute shadow-lg rounded-bl-lg rounded-br-lg">
+                                <div class="fcard-header bg-purple-light flex justify-between items-center py-2 px-4 text-white rounded-tl-lg rounded-tr-lg">
+                                    <!-- Title of Card -->
+                                    <p class="cf-segoe-semibold text-sm">Onboarding Date</p>
+                                    <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
+                                </div>
+                                <div class="fcard-body px-3 pt-5 cf-segoe-semibold text-gray-c1400 text-sm">
+                                    <div class="fc-input relative">
+                                        <input class="w-full py-1 px-2 border border-gray-200 rounded-md datetimepicker" type="text" name="start_date" placeholder="Start Date" autocomplete="off">
+                                        <div class="cursor-pointer absolute right-2 svg-cont transform rotate-180 w-5 h-5 top-1">
+                                            <svg class="inline-block ml-1 mb-2 transform" xmlns="http://www.w3.org/2000/svg" width="8.165" height="4.314" viewBox="0 0 8.165 4.314"><defs><style>.a{fill:#823bee;fill-rule:evenodd;}</style></defs><g transform="translate(10.269 -1.111) rotate(90)"><g transform="translate(5.426 10.269) rotate(180)"><path class="a" d="M.126,7.391a.471.471,0,0,0,0,.642.417.417,0,0,0,.61,0L4.188,4.4a.471.471,0,0,0,0-.642L.737.133a.417.417,0,0,0-.61,0,.471.471,0,0,0,0,.642L3.273,4.083Z"/></g></g></svg>
+                                        </div>
+                                    </div>
+                                    <div class="fc-input relative mt-2">
+                                        <input class="w-full py-1 px-2 border border-gray-200 rounded-md datetimepicker" type="text" name="end_date" placeholder="End Date" autocomplete="off">
+                                        <div class="cursor-pointer absolute right-2 svg-cont transform rotate-180 w-5 h-5 top-1">
+                                            <svg class="inline-block ml-1 mb-2 transform" xmlns="http://www.w3.org/2000/svg" width="8.165" height="4.314" viewBox="0 0 8.165 4.314"><defs><style>.a{fill:#823bee;fill-rule:evenodd;}</style></defs><g transform="translate(10.269 -1.111) rotate(90)"><g transform="translate(5.426 10.269) rotate(180)"><path class="a" d="M.126,7.391a.471.471,0,0,0,0,.642.417.417,0,0,0,.61,0L4.188,4.4a.471.471,0,0,0,0-.642L.737.133a.417.417,0,0,0-.61,0,.471.471,0,0,0,0,.642L3.273,4.083Z"/></g></g></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fcard-footer text-right py-4 pr-3">
+                                    <span class="bg-purple-light text-white cf-segoe-semibold text-sm cursor-pointer py-1 px-4 rounded-full fc-apply">Apply</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ID of the BOX is unique -->
+                        <div id="filter-box-callduration" class="relative filter-boxes mr-4 filter-boxes hidden order-last">
+
+                            <div class="filter-pill hidden">
+                                <div class="flex justify-between items-center pl-3 pr-2 py-2 rounded-lg border border-gray-ccbcbcb bg-gray-ce8e8e8 w-40">
+                                    <!-- Title of Filter Pill -->
+                                    <p class="cf-segoe-regular text-xxsl mr-2">Call Duration</p>
+                                    <div class="flex">
+                                        <div class="fp-edit p-1 rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer mr-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7.144 7.145"><defs><style>.fp-edit-a{fill:#fff;}</style></defs><g transform="translate(-17.208 -2.879)"><path class="fp-edit-a" d="M22.976,2.84a1.33,1.33,0,0,0-.946.391L17.54,7.721l1.893,1.893,4.489-4.489a1.339,1.339,0,0,0-.947-2.285ZM17.308,8.12l-.137,1.622a.223.223,0,0,0,.241.241l1.621-.138Z" transform="translate(0.038 0.038)"/></g></svg>
+                                        </div>
+                                        <div class="fp-remove rounded-full bg-gray-c800 border border-gray-c800 cursor-pointer w-4 h-4 p-0.5 transform rotate-45">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 9.068 9.068"><defs><style>.fp-remove-a{fill:#fff;}</style></defs><path class="fp-remove-a" d="M8.45,3.71H5.358V.618A.618.618,0,0,0,4.74,0H4.328A.618.618,0,0,0,3.71.618V3.71H.618A.618.618,0,0,0,0,4.328V4.74a.618.618,0,0,0,.618.618H3.71V8.45a.618.618,0,0,0,.618.618H4.74a.618.618,0,0,0,.618-.618V5.358H8.45a.618.618,0,0,0,.618-.618V4.328A.618.618,0,0,0,8.45,3.71Z"/></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter-card w-72 bg-white absolute shadow-lg rounded-bl-lg rounded-br-lg">
+                                <div class="fcard-header bg-purple-light flex justify-between items-center py-2 px-4 text-white rounded-tl-lg rounded-tr-lg">
+                                    <!-- Title of Card -->
+                                    <p class="cf-segoe-semibold text-sm">Call Duration</p>
+                                    <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
+                                </div>
+                                <div class="fcard-body px-3 pt-5 cf-segoe-semibold text-gray-c1400 text-sm">
+                                    <div class="fc-input relative mt-2 w-8/12 m-auto">
+                                        <div id="range_slider"></div>
+                                    </div>
+                                </div>
+                                <div class="fcard-footer text-right py-4 pr-3">
+                                    <span class="bg-purple-light text-white cf-segoe-semibold text-sm cursor-pointer py-1 px-4 rounded-full fc-apply">Apply</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+    
+                    <!-- Filter button wrap -->
+                    <div class="add-filter-wrap cf-segoe-regular relative z-10">
+                        <!-- Filter button -->
+                        <div class="af-btn w-40 rounded-lg font-gray-c5a5a5a flex justify-center items-center border border-gray-ccbcbcb pt-1.5 pb-1 cursor-pointer bg-white">
+                            <span class="text-xl mr-1 -mt-1">+</span>
+                            <p class="text-xxsl opacity-60">Add a filter</p>
+                        </div>
+    
+                        <!-- List of filters -->
+                        <ul class="af-options w-40 rounded-lg bg-white cf-segoe-regular text-xxsl text-gray-c300 shadow-md mt-1 cursor-pointer hidden absolute">
+                            <!-- data-id and Title of each li matches it's respective Filter Box -->
+                            <li data-id="filter-box-campaign" class="py-2.5 pl-3.5 hover:bg-gray-ce8e8e8"><span>Campaign</span></li>
+                            <li data-id="filter-box-agent" class="py-2.5 pl-3.5 hover:bg-gray-ce8e8e8"><span>Agent</span></li>
+                            <li data-id="filter-box-status" class="py-2.5 pl-3.5 hover:bg-gray-ce8e8e8"><span>Rating</span></li>
+                            <li data-id="filter-box-disposition" class="py-2.5 pl-3.5 hover:bg-gray-ce8e8e8"><span>Email</span></li>
+                            <li data-id="filter-box-date" class="py-2.5 pl-3.5 hover:bg-gray-ce8e8e8"><span>Date</span></li>
+                            <li data-id="filter-box-callduration" class="py-2.5 pl-3.5 hover:bg-gray-ce8e8e8"><span>Call Duration</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex flex-col w-1/2 m-auto bg-white my-9 suspend-fade">
+        <!-- <div id="range_slider"></div> -->
+    </div>
+
+    <script>
+        $("#range_slider").ionRangeSlider({
+            skin: 'round',
+            type: 'double',
+            grid: true,
+            // grid_num: 10,
+            grid_snap: true,
+            min: 0,
+            max: 10,
+            from: 1,
+            to: 7.5,
+            step: 0.5,
+            postfix: 'min',
+            extra_classes: 'ranger-range-slider'
+        });
+
+        $(".irs-min:contains('min'), .irs-max:contains('min'), .irs-from:contains('min'), .irs-to:contains('min')").html(function(_, html) {
+            return html.replace(/(min)/g, '<span class="postfix_label">$1</span>');
+        });
+    </script>
+    
+</body>
+</html>

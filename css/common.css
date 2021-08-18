@@ -1,0 +1,15 @@
+input:focus, textarea:focus, select:focus, div:focus{
+    outline: none;
+}
+.cust-scroll::-webkit-scrollbar,
+.filter-box .value-container::-webkit-scrollbar {
+    width: 6px;
+}
+.cust-scroll::-webkit-scrollbar-thumb,
+.filter-box .value-container::-webkit-scrollbar-thumb {
+    background-color: #A777F3;
+    border-radius: 3px;
+}
+.filter-box input:focus, .filter-box textarea:focus, .filter-box select:focus, .filter-box div:focus{
+    outline: none;
+}
