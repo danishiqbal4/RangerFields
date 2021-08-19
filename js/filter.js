@@ -342,7 +342,6 @@ $(document).ready(function(){
                 }
 
                 if(!$(this).hasClass('hidden')){
-                    console.log('k');
                     hiddenFilters = true;
                 }
             });
@@ -607,15 +606,28 @@ $(document).ready(function(){
 
             checkboxArr['email'] = emailArr;
         }
+
+        const date_start = $('.filter-box-wrap').find('input[name="start_date"]').val();
+        const date_end = $('.filter-box-wrap').find('input[name="end_date"]').val();
+
+        if(date_start != '' || date_end != ''){
+            checkboxArr['date'] = [date_start, date_end];
+        }
+
+
+        const call_duration_from = $('.filter-box-wrap').find('.call-duration-from').val();
+        const call_duration_to = $('.filter-box-wrap').find('.call-duration-to').val();
+
+        if(call_duration_from != '' && call_duration_to != ''){
+            checkboxArr['call_duration'] = [call_duration_from, call_duration_to];
+        }
+
     
         console.log(checkboxArr);
 
         checkboxArr = JSON.stringify(checkboxArr);
 
         console.log(checkboxArr);
-
-        // console.log($('.filter-box-wrap').find('input[name="start_date"]'));
-        // console.log($('.filter-box-wrap').find('input[name="end_date"]'));
 
     }
 
