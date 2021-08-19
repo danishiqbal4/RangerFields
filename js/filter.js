@@ -1,5 +1,27 @@
 $(document).ready(function(){
 
+    if($("#range_slider")){
+        var $rangeSlider = $("#range_slider").ionRangeSlider({
+            skin: 'round',
+            type: 'double',
+            grid: true,
+            grid_snap: true,
+            min: 0,
+            max: 10,
+            from: 1,
+            to: 7.5,
+            step: 0.5,
+            postfix: ' min',
+            extra_classes: 'ranger-range-slider',
+            onChange: function (data) {
+                $('#range_slider').siblings('.call-duration-from').val(data['from_pretty']);
+                $('#range_slider').siblings('.call-duration-to').val(data['to_pretty']);
+            },
+        });
+
+        var rangeSlider_instance = $rangeSlider.data("ionRangeSlider");
+    }
+
     $('body').click(function(){
 
         $('.af-options').addClass('hidden');
@@ -173,6 +195,14 @@ $(document).ready(function(){
                         $(this).closest('.filter-card').find('.fc-input input:eq('+[i]+')').val(checkArr['check_list'][i]);
                     }
                     
+                } else if(ID === 'filter-box-callduration'){
+
+                    for(i=0; i<checkArr['check_list'].length; i++){
+                        $(this).closest('.filter-card').find('.fc-input .call-duration-input:eq('+[i]+')').val(checkArr['check_list'][i]);
+                    }
+
+                    resetRangeSlider(checkArr['check_list'][0], checkArr['check_list'][1]);
+                    
                 } else {
 
                     if(!$(this).closest('.filter-card').find('.fc-options').hasClass('hidden')){
@@ -253,6 +283,21 @@ $(document).ready(function(){
 
             if(temp < 1){
                 alert('Please set atleast one date!');
+                return false;
+            }
+
+        } else if(ID === 'filter-box-callduration'){
+
+            let temp = 0;
+            $(this).closest('.filter-card').find('.fc-input .call-duration-input').each(function(){
+                if($(this).val().trim() !== ''){
+                    temp++;
+                    return false;
+                }
+            });
+
+            if(temp < 1){
+                alert('Please drag the sliders at least once!');
                 return false;
             }
 
@@ -372,6 +417,10 @@ $(document).ready(function(){
 
         if(ID === 'filter-box-date'){
             $(this).closest('.filter-boxes').find('.fc-input input').val('');
+        } else if(ID === 'filter-box-callduration') {
+            $(this).closest('.filter-boxes').find('.fc-input .call-duration-input').val('');
+
+            resetRangeSlider(1, 7.5);
         }
 
         let hiddenFilters = false;
@@ -433,6 +482,15 @@ $(document).ready(function(){
 
             checkArr['check_list'] = check_list;
 
+        } else if(ID === 'filter-box-callduration'){
+            //If filter is for Call Duration
+
+            $(this).closest('.filter-boxes').find('.fc-input .call-duration-input').each(function(){
+                check_list.push($(this).val().trim());
+            });
+
+            checkArr['check_list'] = check_list;
+
         } else {
         
             $(this).closest('.filter-boxes').find('.fc-options li').each(function(index){
@@ -461,6 +519,25 @@ $(document).ready(function(){
     //CODE FOR ADDING FILTERS ENDS//
     //****************************//
 
+    function resetRangeSlider(from, to){
+        rangeSlider_instance.update({
+            skin: 'round',
+            type: 'double',
+            grid: true,
+            grid_snap: true,
+            min: 0,
+            max: 10,
+            from: from,
+            to: to,
+            step: 0.5,
+            postfix: ' min',
+            extra_classes: 'ranger-range-slider',
+            onChange: function (data) {
+                $('#range_slider').siblings('.call-duration-from').val(data['from_pretty']);
+                $('#range_slider').siblings('.call-duration-to').val(data['to_pretty']);
+            },
+        });
+    }
 
     //******************************************//
     //FUNCTION FOR SHOWING NUMBER OF SELECTED OPTIONS STARTS//
@@ -485,7 +562,7 @@ $(document).ready(function(){
     //******************************************//
 
     function collectFilterData(){
-        //Loop through all the checkboxes and date textboxes to collect the filter data
+        //Loop through all the checkboxes, date textboxes and call duration textboxes to collect the filter data
         //Fires on card Apply button click and filter remove icon click
 
         let checkboxArr = {};

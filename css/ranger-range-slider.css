@@ -37,14 +37,14 @@
     top: 30px;
     background-color: transparent;
     font-family: 'Montserrat';
-    font-size: 12px;
+    font-size: 10px;
     visibility: visible !important;
 }
 .irs-min {
-    left: -30px;
+    left: -50px;
 }
 .irs-max {
-    right: -30px;
+    right: -50px;
 }
 .irs--round .irs-from,
 .irs--round .irs-to,
@@ -52,7 +52,8 @@
     background-color: transparent;
     color: #707070;
     font-family: 'Montserrat';
-    font-size: 12px;
+    font-size: 10px;
+    top: 10px;
 }
 .irs--round .irs-from:before, .irs--round .irs-to:before, .irs--round .irs-single:before{
     content: none;

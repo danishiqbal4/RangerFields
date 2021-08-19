@@ -15,14 +15,6 @@
     <link rel="stylesheet" type="" href="./css/common.css">
     <link rel="stylesheet" type="" href="./css/ranger-range-slider.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>  
-
-    <script src="./js/filter.js"></script>
-
 </head>
 <body class="select-none">
 
@@ -579,9 +571,13 @@
                                     <p class="cf-segoe-semibold text-sm">Call Duration</p>
                                     <span class="fcard-close cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="18.137" height="18.137" viewBox="0 0 18.137 18.137"><defs><style>.cross-a{fill:#fff;}</style></defs><g transform="translate(9.068) rotate(45)"><path class="cross-a" d="M11.95,5.246H7.578V.874A.875.875,0,0,0,6.7,0H6.121a.875.875,0,0,0-.874.874V5.246H.874A.875.875,0,0,0,0,6.121V6.7a.875.875,0,0,0,.874.874H5.246V11.95a.875.875,0,0,0,.874.874H6.7a.875.875,0,0,0,.874-.874V7.578H11.95a.875.875,0,0,0,.874-.874V6.121A.875.875,0,0,0,11.95,5.246Z"/></g></svg></span>
                                 </div>
-                                <div class="fcard-body px-3 pt-5 cf-segoe-semibold text-gray-c1400 text-sm">
+                                <div class="fcard-body px-3 pt-0 cf-segoe-semibold text-gray-c1400 text-sm">
                                     <div class="fc-input relative mt-2 w-8/12 m-auto">
-                                        <div id="range_slider"></div>
+                                        <!-- <div id="range_slider"></div> -->
+                                        <input type="hidden" id="range_slider" value="" />
+
+                                        <input type="hidden" class="call-duration-from call-duration-input" name="call-duration-from" value="" />
+                                        <input type="hidden" class="call-duration-to call-duration-input" name="call-duration-to" value="" />
                                     </div>
                                 </div>
                                 <div class="fcard-footer text-right py-4 pr-3">
@@ -618,30 +614,13 @@
 
     </div>
 
-    <div class="flex flex-col w-1/2 m-auto bg-white my-9 suspend-fade">
-        <!-- <div id="range_slider"></div> -->
-    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script>
-        $("#range_slider").ionRangeSlider({
-            skin: 'round',
-            type: 'double',
-            grid: true,
-            // grid_num: 10,
-            grid_snap: true,
-            min: 0,
-            max: 10,
-            from: 1,
-            to: 7.5,
-            step: 0.5,
-            postfix: 'min',
-            extra_classes: 'ranger-range-slider'
-        });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>  
 
-        $(".irs-min:contains('min'), .irs-max:contains('min'), .irs-from:contains('min'), .irs-to:contains('min')").html(function(_, html) {
-            return html.replace(/(min)/g, '<span class="postfix_label">$1</span>');
-        });
-    </script>
+    <script src="./js/filter.js"></script>
     
 </body>
 </html>
