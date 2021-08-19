@@ -2,14 +2,45 @@
     height: 5px;
     top: 6px;
 }
-.ranger-range-slider .irs-grid-pol:not(.small):nth-child(2n){
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(3),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(5),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(7),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(11),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(13),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(15),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(19),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(21),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(23),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(27),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(29),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(31),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(35),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(37),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(39),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(43),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(45),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(47),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(51),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(53),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(55),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(59),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(61),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(63),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(67),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(69),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(71),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(75),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(77),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(79),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(83),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(85),
+.ranger-range-slider .irs-grid-pol:not(.small):nth-child(87){
     display: none;
 }
 .ranger-range-slider.irs--round .irs-grid-text{
     display: none;
 }
 .ranger-range-slider .irs-grid-pol.small {
-    height: 5px;
     display: none;
 }
 .ranger-range-slider.irs--round .irs-grid-pol {

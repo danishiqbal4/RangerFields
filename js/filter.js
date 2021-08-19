@@ -10,7 +10,7 @@ $(document).ready(function(){
             max: 10,
             from: 1,
             to: 7.5,
-            step: 0.5,
+            step: 0.25,
             postfix: ' min',
             extra_classes: 'ranger-range-slider',
             onChange: function (data) {
@@ -518,6 +518,11 @@ $(document).ready(function(){
     //CODE FOR ADDING FILTERS ENDS//
     //****************************//
 
+
+    //********************************//
+    //Function FOR slider reset starts//
+    //********************************//
+
     function resetRangeSlider(from, to){
         rangeSlider_instance.update({
             skin: 'round',
@@ -537,6 +542,11 @@ $(document).ready(function(){
             },
         });
     }
+
+    //******************************//
+    //Function FOR slider reset ends//
+    //******************************//
+
 
     //******************************************//
     //FUNCTION FOR SHOWING NUMBER OF SELECTED OPTIONS STARTS//
