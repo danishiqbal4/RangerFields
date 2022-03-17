@@ -90,7 +90,8 @@ module.exports = {
                     c484848: '#484848',
                     cF9FAFB: '#F9FAFB',
                     cA8A8A8: '#A8A8A8',
-                    c5F5F5F: '#5F5F5F'
+                    c5F5F5F: '#5F5F5F',
+                    cEEF2F4: '#EEF2F4'
                 },
                 green:{
                     c400: '#04bb66',

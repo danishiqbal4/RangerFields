@@ -5,12 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <link rel="stylesheet" type="" href="./build/style.css">
 </head>
 <body class="select-none">
-    <div class="flex flex-col sm:flex-row bg-white">
+    <div class="flex flex-col sm:flex-row bg-white mt-10 justify-center">
 
         <div class="ranger-input-wrap flex justify-between items-stretch w-3/12 border border-gray-cDEDEDF rounded">
             <div class="ranger-pill-wrap w-full text-xs text-gray-c2200 px-1.5 pt-1 cf-segoe-semibold cursor-text">
@@ -26,6 +24,8 @@
         </div>
         
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -51,7 +51,14 @@
 
                         setRangerInputValue($(this).closest('.ranger-input-wrap'));
                     }
+                } 
+                else if(e.key == 'Enter'){
+                    e.preventDefault();
+                    
+                    $(this).closest('.ranger-input-wrap').find('.ranger-plus').click();
                 }
+
+                setPlaceholder($(this));
 
             });
 
@@ -144,7 +151,20 @@
 
             });
 
-            $RangerInputWrap.children('.ranger-input-value').val(valueArray.join());
+            $RangerInputWrap.children('.ranger-input-value').val(valueArray.join('|||'));
+
+        }
+
+        function setPlaceholder($input){
+
+            if($input.siblings('.ranger-pill').length > 0){
+                $input.removeClass('w-full').attr('placeholder', '');
+                $input.parent().removeClass('pl-3').addClass('pl-1.5');
+            } else {
+                const placeholder = $input.attr('data-placeholder');
+                $input.css('width', '').addClass('w-full').attr('placeholder', placeholder);
+                $input.parent().addClass('pl-3').removeClass('pl-1.5');
+            }
 
         }
 
