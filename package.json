@@ -10,11 +10,15 @@
     "minify": "css-minify -f public/styles.css"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sheikh Danish Iqbal <danishiqbal4@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
     "tailwindcss": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danishiqbal4/RangerFields.git"
   }
 }
