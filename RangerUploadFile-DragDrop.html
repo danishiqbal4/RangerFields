@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger INPUT - Drag Drop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="" href="./build/style.css">
+    <link rel="stylesheet" type="" href="./css/common.css">
+
+</head>
+<body class="select-none">
+
+    <!-- Asset File -->
+    <div class="flex flex-col mx-auto w-80 asset-file-wrap cxphone:w-full cxphone:mb-5">
+        <div class="flex items-center mb-1">
+            <label class="cf-r-semibold text-xs text-gray-c5F5F5F">*Asset</label>
+
+            <!-- Tool Tip -->
+            <div class="relative tool-tip">
+                <span class="flex items-center justify-center w-5 h-5 rounded-full bg-gray-cBFBFBF ml-2.5 text-white cf-r-semibold text-xs cursor-pointer">?</span>
+                <div class="absolute top-8 left-0 bg-white shadow-md rounded px-3.5 py-2.5 w-56 text-xs z-50 tool-tip-box">
+                    <h4 class="cf-r-bold mb-3">Asset</h4>
+                    <p class="cf-r-medium">Upload the asset file.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="ranger-upload-wrap flex flex-col items-center justify-center">
+            <div class="ranger-upload-canvas flex flex-col items-center justify-center rounded bg-white border-2 border-dashed border-gray-cCCCCCC w-full h-40">
+                <div class="cf-r-medium text-xs text-black-c000000 text-opacity-90 mb-5 cxtab:mb-3">Drag &amp; Drop files or Upload</div>
+    
+                <div class="flex items-center justify-center cf-r-bold text-xxs text-white w-24 h-7 bg-blue-c147BF5 rounded relative cursor-pointer cxtab:h-5">
+                    <span>Add Document</span>
+    
+                    <input type="file" class="ranger-upload-field cursor-pointer absolute top-0 left-0 w-full h-full opacity-0 indent-full" name="asset_upload_file" accept="image/jpg,image/jpeg,image/png" required="required">
+                </div>
+            </div>
+    
+            <div class="ranger-upload-file-list w-2/3 mr-auto"></div>
+            <input type="hidden" name="asset_file_hidden_list" class="ranger-upload-hidden-list asset-file-input" required="required">
+        </div>
+
+        <!-- Error message -->
+        <div class="mt-1 error-msg hidden flex items-center">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><defs><style>.ea{fill:#ff3429;}.eb{fill:#fff;}</style></defs><g transform="translate(-399 -365)"><circle class="ea" cx="6" cy="6" r="6" transform="translate(399 365)"></circle><g transform="translate(406.078 375.311) rotate(180)"><circle class="eb" cx="1.039" cy="1.039" r="1.039" transform="translate(0.001)"></circle><path class="eb" d="M1.04,0A1.042,1.042,0,0,0,0,1.039V4.154a1.039,1.039,0,0,0,2.077,0V1.039A1.039,1.039,0,0,0,1.04,0Z" transform="translate(0 3.118)"></path></g></g></svg></span>
+            <label class="text-red-500 text-xs ml-2">Upload Asset File</label>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $(".ranger-upload-field").change(function() {
+                $(this).closest('.ranger-upload-wrap').find('.ranger-upload-file-list').children().remove();
+                $(this).closest('.ranger-upload-wrap').find('.ranger-upload-hidden-list').val('');
+                // $(this).closest('.ranger-upload-wrap').find('.ranger-upload-empty-label').show();
+
+                let fileObj = $(this).get(0).files;
+                let fileValueBox = $(this).closest('.ranger-upload-wrap').find('.ranger-upload-hidden-list');
+                let fileNameArr = [];
+
+                for (let i = 0; i < fileObj.length; ++i) {
+                    let fileName = fileObj[i].name;
+                    let fileNameSmall = fileName.split('.').slice(0, -1).join('.');
+                    let fileSize = Math.round(fileObj[i].size / 1024);
+
+                    let html = getUploadFileRowHTML(fileNameSmall, fileSize);
+
+                    $(this).closest('.ranger-upload-wrap').find('.ranger-upload-file-list').append(html);
+                    
+                    fileNameArr.push(fileName);
+                }
+
+                if(fileNameArr.length > 0){
+                    let fileValue = fileValueBox.val();
+
+                    if (fileValue.trim().length > 0) {
+                        let fileArr = fileValue.split(',');
+                        //fileArr.push(fileName);
+                        fileArr.splice(2, 0, ...fileNameArr);
+                        fileValueBox.val(fileArr.join(','));
+                    } else {
+                        fileValueBox.val(fileNameArr.join(','));
+                    }
+
+                    fileValueBox.trigger('change');
+                    inputFileFieldChange($(this).closest('.ranger-upload-wrap'));
+                }
+
+
+                // if (fileValueBox.val().trim().length > 0) {
+                //     $(this).closest('.ranger-upload-wrap').find('.ranger-upload-empty-label').hide();
+                // } else {
+                //     $(this).closest('.ranger-upload-wrap').find('.ranger-upload-empty-label').show();
+                // }
+            });
+
+            $(document).on('click', '.ranger-upload-file-cross', function(e){
+                e.preventDefault();
+                let removeEmail = $(this).siblings('.ranger-upload-file-name').text();
+                let emailValueBox = $(this).closest('.ranger-upload-wrap').find('.ranger-upload-hidden-list');
+                let emailValue = emailValueBox.val();
+                let emailArr = emailValue.split(',');
+
+                let index = emailArr.indexOf(removeEmail);
+                emailArr.splice(index, 1);
+                emailValueBox.val(emailArr.join(','));
+
+                if (emailValueBox.val().trim().length < 1) {
+                    // emailValueBox.siblings('.ranger-upload-empty-label').show();
+                    $(this).closest('.ranger-upload-wrap').find('.ranger-upload-field').val('');
+                }
+
+                inputFileFieldChange($(this).closest('.ranger-upload-wrap'));
+                
+                $(this).parent('.ranger-upload-file-row').remove();
+
+                emailValueBox.trigger('change');
+            });
+
+            $('.ranger-upload-canvas').on('dragover', function(e){
+
+                e.preventDefault();
+
+                $(this).removeClass('bg-white');
+                $(this).addClass('bg-gray-cF9FAFB');
+
+            });
+
+            $('.ranger-upload-canvas').on('dragleave', function(e){
+
+                e.preventDefault();
+
+                $(this).addClass('bg-white');
+                $(this).removeClass('bg-gray-cF9FAFB');
+
+            });
+
+            $('.ranger-upload-canvas').on('drop', function(e){
+
+                e.preventDefault();
+
+                $(this).closest('.ranger-upload-wrap').find('.ranger-upload-file-list').children().remove();
+                $(this).closest('.ranger-upload-wrap').find('.ranger-upload-hidden-list').val('');
+                // $(this).closest('.ranger-upload-wrap').find('.ranger-upload-empty-label').show();
+
+                let multiple = $(this).find('.ranger-upload-field').attr('multiple');
+
+                let fileObj = e.originalEvent.dataTransfer.files;;
+                let length;
+
+                if(multiple){
+                    length = fileObj.length;
+                } else {
+                    length = 1;
+                }
+
+                let fileValueBox = $(this).closest('.ranger-upload-wrap').find('.ranger-upload-hidden-list');
+                let fileNameArr = [];
+
+                for (let i = 0; i < length; ++i) {
+                    let fileType = fileObj[i].type;
+
+                    let validExtensions = $(this).find('.ranger-upload-field').attr('accept');
+                    validExtensions = validExtensions.split(',');
+
+                    if(validExtensions.includes(fileType)){
+                        let fileReader = new FileReader();
+
+                        fileReader.readAsDataURL(fileObj[i]);
+
+                        fileReader.onload = ()=>{
+                            let fileURL = fileReader.result; //Converting file to base64 URL
+                        }
+
+                    } else {
+                        alert('Please upload a file which has these extensions '+validExtensions.join(','));
+                    }
+
+                    let fileName = fileObj[i].name;
+                    let fileNameSmall = fileName.split('.').slice(0, -1).join('.');
+                    let fileSize = Math.round(fileObj[i].size / 1024);
+
+                    let html = getUploadFileRowHTML(fileNameSmall, fileSize);
+
+                    $(this).closest('.ranger-upload-wrap').find('.ranger-upload-file-list').append(html);
+                    
+                    fileNameArr.push(fileName);
+                }
+
+                if(fileNameArr.length > 0){
+                    let fileValue = fileValueBox.val();
+
+                    if (fileValue.trim().length > 0) {
+                        let fileArr = fileValue.split(',');
+                        //fileArr.push(fileName);
+                        fileArr.splice(2, 0, ...fileNameArr);
+                        fileValueBox.val(fileArr.join(','));
+                    } else {
+                        fileValueBox.val(fileNameArr.join(','));
+                    }
+
+                    fileValueBox.trigger('change');
+                    inputFileFieldChange($(this).closest('.ranger-upload-wrap'));
+                }
+
+                // if (fileValueBox.val().trim().length > 0) {
+                //     $(this).closest('.ranger-upload-wrap').find('.ranger-upload-empty-label').hide();
+                // } else {
+                //     $(this).closest('.ranger-upload-wrap').find('.ranger-upload-empty-label').show();
+                // }
+
+                $(this).addClass('bg-white');
+                $(this).removeClass('bg-gray-cF9FAFB');
+
+            });
+
+
+        });
+
+        function getUploadFileRowHTML(fileNameSmall, fileSize){
+
+            html = `<div class="ranger-upload-file-row flex items-center justify-between px-2.5 py-1.5 my-2 cxphone:mt-0 cxphone:py-1">
+                <div class="flex">
+                    <img src="icons/file.svg" />
+                    <div class="flex flex-col ml-2 mt-0.5">
+                        <h3 class="ranger-upload-file-name mb-0.5 break-words text-black-c333333 text-xxsl text-opacity-90 cf-h-bold">${fileNameSmall}</h3>
+                        <span class="text-xxs text-gray-cA8A8A8">${fileSize} Kb</span>
+                    </div>
+                </div>
+                <span class="flex items-center justify-end rounded-full form-icons ranger-upload-file-cross cursor-pointer w-5 h-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 17.815 17.815"><defs><style>.cross-icon-a{fill:#7a7a7a;opacity:0.72;}</style></defs><path class="cross-icon-a" d="M11.738,5.153H7.444V.859A.859.859,0,0,0,6.585,0H6.012a.859.859,0,0,0-.859.859V5.153H.859A.859.859,0,0,0,0,6.012v.573a.859.859,0,0,0,.859.859H5.153v4.295a.859.859,0,0,0,.859.859h.573a.859.859,0,0,0,.859-.859V7.444h4.295a.859.859,0,0,0,.859-.859V6.012A.859.859,0,0,0,11.738,5.153Z" transform="translate(8.908) rotate(45)"/></svg>
+                </span>
+            </div>`;
+
+            return html;
+
+        }
+
+        function inputFileFieldChange($rangerInputWrap){
+
+            if(typeof inputFileFieldChangeHook === 'function'){
+                inputFileFieldChangeHook($rangerInputWrap);
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

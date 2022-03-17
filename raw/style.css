@@ -8,6 +8,34 @@
 .cf-hev{
     font-family: 'Helvetica';
 }
+
+@font-face {
+    font-family: 'Helvetica-Regular';
+    src: url('../fonts/Helvetica-Neue-Regular.ttf');
+}
+@font-face {
+    font-family: 'Helvetica-Medium';
+    src: url('../fonts/Helvetica-Neue-LT-Std-65-Medium.ttf');
+}
+@font-face {
+    font-family: 'Helvetica-Bold';
+    src: url('../fonts/Helvetica-Neue-Bold.ttf');
+}
+
+.cf-h-regular{
+    font-family: 'Helvetica-Regular';
+    font-weight: normal;
+}
+.cf-h-medium{
+    font-family: 'Helvetica-Medium';
+    font-weight: normal;
+}
+.cf-h-bold{
+    font-family: 'Helvetica-Bold';
+    font-weight: normal;
+}
+
+/* Montserrat */
 .cf-regular{
     font-family: 'Montserrat';
     font-weight: 400;
@@ -72,6 +100,12 @@
 }
 .cf-segoe-bold{
     font-family: 'Segoe-UI-Bold';
+}
+
+@layer utilities {
+    .indent-full{
+        text-indent: -999999px
+    }
 }
 
 @tailwind components;

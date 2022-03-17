@@ -13,3 +13,41 @@ input:focus, textarea:focus, select:focus, div:focus{
 .filter-box input:focus, .filter-box textarea:focus, .filter-box select:focus, .filter-box div:focus{
     outline: none;
 }
+
+/* Tool Tip */
+.tool-tip:hover .tool-tip-box{
+    display: block;
+}
+.tool-tip-box{
+    display: none;
+    border-top: 1px solid #0000000a;
+}
+.tool-tip-box::after{
+    position: absolute;
+    display: inline-block;
+    content: "";
+    top: -14px;
+    right: auto;
+    left: 13px;
+    border: 7px solid transparent;
+    border-bottom-color: #fff;
+}
+.tool-tip-box::before{
+    position: absolute;
+    display: inline-block;
+    content: "";
+    top: -16px;
+    right: auto;
+    left: 12px;
+    border: 8px solid transparent;
+    border-bottom-color: #0000000f;
+}
+
+.tool-tip-right .tool-tip-box::before{
+    right: 42px;
+    left: auto;
+}
+.tool-tip-right .tool-tip-box::after{
+    right: 43px;
+    left: auto;
+}
