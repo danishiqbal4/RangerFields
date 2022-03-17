@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranger Calendar Filter</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="" href="./build/style.css">
+</head>
+<body class="select-none">
+    <div class="flex flex-col justify-center sm:flex-row bg-white">
+
+        <div class="flex justify-between mt-5">
+            <!-- Dates box -->
+            <div class="flex dates-box mr-4 cxphone:hidden">
+                <!-- Choose dates select box -->
+                <div data-type="calendar" class="relative ranger-select-wrap-calendar ranger-select-wrap">
+
+                    <div class="flex justify-between w-32 h-8 text-xxsl p-2.5 rounded-tl-2xl rounded-bl-2xl border border-gray-cE5E5E5 cursor-pointer bg-white hover:bg-gray-cFAFAFA ranger-select-btn">
+                        <span class="cf-r-bold text-gray-c484848 ranger-select-selected">Today</span>
+                        <svg class="mt-0.5" xmlns="http://www.w3.org/2000/svg" width="8.277" height="4.695" viewBox="0 0 8.277 4.695"><path id="caret-down-filled" d="M11.852,192h7.163a.556.556,0,0,1,.393.949l-3.58,3.583a.558.558,0,0,1-.788,0l-3.58-3.583A.556.556,0,0,1,11.852,192Z" transform="translate(-11.295 -192)" fill="#747474"></path></svg>
+                    </div>
+
+                    <ul class="absolute -left-5 w-40 bg-white z-50 rounded shadow mt-1.5 cursor-pointer text-xs cf-r-semibold hidden ranger-select-options-box">
+                        <li data-text="Custom" class="flex justify-between px-4 py-2 bg-white hover:bg-gray-cF5F5F5">
+                            Custom
+                            <img class="hidden" src="icons/tick-blue.svg" />
+                        </li>
+                        <li data-text="Today" class="flex justify-between px-4 py-2 bg-white text-blue-c0056AB hover:bg-gray-cF5F5F5">
+                            Today
+                            <img class="" src="icons/tick-blue.svg" />
+                        </li>
+                        <li data-text="Last 7 days" class="flex justify-between px-4 py-2 bg-white hover:bg-gray-cF5F5F5">
+                            Last 7 Days
+                            <img class="hidden" src="icons/tick-blue.svg" />
+                        </li>
+                        <li data-text="Last 4 weeks" class="flex justify-between px-4 py-2 bg-white hover:bg-gray-cF5F5F5">
+                            Last 4 Weeks
+                            <img class="hidden" src="icons/tick-blue.svg" />
+                        </li>
+                        <li data-text="Last 3 months" class="flex justify-between px-4 py-2 bg-white hover:bg-gray-cF5F5F5">
+                            Last 3 Months
+                            <img class="hidden" src="icons/tick-blue.svg" />
+                        </li>
+                        <li data-text="Last 12 months" class="flex justify-between px-4 py-2 bg-white hover:bg-gray-cF5F5F5">
+                            Last 12 Months
+                            <img class="hidden" src="icons/tick-blue.svg" />
+                        </li>
+                        <li data-text="All Time" class="flex justify-between px-4 py-2 bg-white hover:bg-gray-cF5F5F5">
+                            All Time
+                            <img class="hidden" src="icons/tick-blue.svg" />
+                        </li>
+                    </ul>
+
+                    <input type="hidden" value="" name="dates" class="ranger-select-hidden-value">
+
+                </div>
+
+                <!-- Calendar's -->
+                <div>
+                    <!-- Date Labels -->
+                    <div class="flex justify-between w-32 h-8 text-xxsl p-2.5 rounded-tr-2xl rounded-br-2xl border border-gray-cE5E5E5 border-l-0 bg-white hover:bg-gray-cFAFAFA cursor-text dates-chosen">
+                        <span class="cf-r-bold text-gray-c484848 ranger-select-selected"></span>
+                        <img src="icons/calendar.svg" />
+                    </div>
+
+                    <!-- Calendar click -->
+                    <div class="flex justify-between w-32 h-8 text-xxsl px-2.5 py-0 rounded-tr-2xl rounded-br-2xl border border-gray-cE5E5E5 border-l-0 bg-white hover:bg-gray-cFAFAFA dates-custom relative hidden">
+                        <div class="w-full h-full outline-none bg-transparent cf-r-bold text-gray-c484848 pr-4 py-2.5 cursor-text" id="litepicker"></div>
+                        <img class="absolute top-0 bottom-0 my-auto right-3" src="icons/calendar.svg" />
+                        <!-- <span class="w-3 py-2.5 text-center">-</span>
+                        <input type="text" class="w-1/2 h-full outline-none bg-transparent cf-r-medium text-gray-c484848 pr-4 py-2.5 datetimepicker" placeholder="end" />
+                        <img class="absolute top-0 bottom-0 my-auto right-2" src="icons/calendar.svg" /> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex flex-row justify-center items-center cf-h-medium text-xs text-gray-c565656 ml-4 cxtab:mb-3 cxtab:ml-auto cxphone:mb-0">
+
+                <span>1</span> - <span class="mr-1">10</span> of <span class="ml-1">134</span>
+
+                <span class="flex items-center justify-center w-5 h-5 cursor-pointer ml-4 rounded hover:bg-gray-cF7F7F7">
+                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="5.282" height="9.996" viewBox="0 0 5.282 9.996"><defs><style>.chevron-left-a{fill:#ababab;fill-rule:evenodd;}</style></defs><g transform="translate(0 -0.001)"><g transform="translate(5.282 9.998) rotate(180)"><path class="chevron-left-a" d="M.155,9.048a.576.576,0,0,0,0,.785.51.51,0,0,0,.747,0L5.127,5.391a.576.576,0,0,0,0-.785L.9.163a.51.51,0,0,0-.747,0,.576.576,0,0,0,0,.785L4.007,5Z" transform="translate(0 0)"></path></g></g></svg>
+                </span>
+
+                <span class="flex items-center justify-center w-5 h-5 cursor-pointer ml-1.5 rounded hover:bg-gray-cF7F7F7">
+                    <svg class="transform rotate-180" xmlns="http://www.w3.org/2000/svg" width="5.282" height="9.996" viewBox="0 0 5.282 9.996"><defs><style>.chevron-left-a{fill:#ababab;fill-rule:evenodd;}</style></defs><g transform="translate(0 -0.001)"><g transform="translate(5.282 9.998) rotate(180)"><path class="chevron-left-a" d="M.155,9.048a.576.576,0,0,0,0,.785.51.51,0,0,0,.747,0L5.127,5.391a.576.576,0,0,0,0-.785L.9.163a.51.51,0,0,0-.747,0,.576.576,0,0,0,0,.785L4.007,5Z" transform="translate(0 0)"></path></g></g></svg>
+                </span>
+           </div>
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"></script>
+
+    <script>
+
+        setCalendarDates();
+
+        const picker = new Litepicker({ 
+            element: document.getElementById('litepicker'),
+            singleMode: false,
+            format: 'DD MMM',
+            setup: (picker) => {
+                picker.on('selected', (date1, date2) => {
+                    const startDay = date1.toLocaleString('default', { day: '2-digit' });
+                    const startMonth = date1.toLocaleString('default', { month: 'short' });
+                    
+                    const endDay = date2.toLocaleString('default', { day: '2-digit' });
+                    const endMonth = date2.toLocaleString('default', { month: 'short' });
+
+                    const html = `<span class="cf-h-medium">${startDay}</span> ${startMonth} - <span class="cf-h-medium">${endDay}</span> ${endMonth}`;
+
+                    $('#litepicker').html(html);
+                });
+            },
+        });
+
+        $(document).ready(function(){
+
+            $(document).on('click', '.dates-chosen', function(){
+
+                $('.ranger-select-wrap-calendar .ranger-select-options-box li:eq(0)').click();
+                $('#litepicker').click();
+
+            });
+
+            $(document).on('click', '#litepicker span', function(){
+
+                $('#litepicker').click();
+
+            });
+
+            $(document).on('click', function(){
+
+                $('.ranger-select-options-box').addClass('hidden');
+
+            });
+
+            $(document).on('click', '.ranger-select-btn', function(e){
+
+                e.stopPropagation();
+                
+                $(this).siblings('.ranger-select-options-box').toggleClass('hidden');
+
+            });
+
+            $(document).on('click', '.ranger-select-options-box', function(e){
+
+                e.stopPropagation();
+
+            });
+
+            $(document).on('click', '.ranger-select-options-box li', function(e){
+
+                const selectType = $(this).closest('.ranger-select-wrap').attr('data-type');
+
+                // Group select box
+                if(selectType == 'group'){
+
+                    setGroupFilter($(this));
+
+                } else if(selectType == 'calendar'){
+
+                    setCalendarFilter($(this));
+
+                } else {
+                    // Show and Status select box
+
+                    const value = $(this).attr('data-text');
+
+                    $(this).closest('.ranger-select-wrap').find('.ranger-select-selected').text(value);
+                    $(this).closest('.ranger-select-options-box').siblings('.ranger-select-hidden-value').val(value);
+                    $(this).closest('.ranger-select-options-box').addClass('hidden');
+                    $(this).parent().children().removeClass('text-blue-c0056AB');
+                    $(this).parent().children().find('img').addClass('hidden');
+
+                    $(this).addClass('text-blue-c0056AB');
+                    $(this).find('img').removeClass('hidden');
+
+                }
+
+            });
+
+        });
+
+        function setCalendarFilter($li){
+
+            const value = $li.attr('data-text');
+
+            if(value == 'Custom'){
+                $('.dates-chosen').addClass('hidden');
+                $('.dates-custom').removeClass('hidden');
+            } else {
+                $('.dates-chosen').removeClass('hidden');
+                $('.dates-custom').addClass('hidden');
+
+                $('.dates-custom').find('input').val('');
+
+                if(value == 'All Time'){
+                    $('.dates-chosen .ranger-select-selected').text('All');
+                } else if(value == 'Today'){
+                    const start = $li.attr('data-start');
+                    let startDay = parseInt(start);
+
+                    if(startDay < 10){
+                        startDay = '0'+startDay;
+                    }
+
+                    $('.dates-chosen .ranger-select-selected').text(start);
+
+                    $('.dates-chosen .ranger-select-selected').html(function(_, html) {
+                        return html.replace(startDay, '<span class="cf-h-medium">'+startDay+'</span>');
+                    });
+                } else {
+
+                    const start = $li.attr('data-start');
+                    let startDay = parseInt(start);
+
+                    if(startDay < 10){
+                        startDay = '0'+startDay;
+                    }
+
+                    const end = $li.attr('data-end');
+                    let endDay = parseInt(end);
+
+                    if(endDay < 10){
+                        endDay = '0'+endDay;
+                    }
+
+                    $('.dates-chosen .ranger-select-selected').text(start + ' - ' + end);
+
+                    $('.dates-chosen .ranger-select-selected').html(function(_, html) {
+                        return html.replace(startDay, '<span class="cf-h-medium">'+startDay+'</span>');
+                    });
+                    $('.dates-chosen .ranger-select-selected').html(function(_, html) {
+                        return html.replaceAll(endDay, '<span class="cf-h-medium">'+endDay+'</span>');
+                    });
+
+                }
+            }
+
+            $li.closest('.ranger-select-wrap').find('.ranger-select-selected').text(value);
+            $li.closest('.ranger-select-options-box').siblings('.ranger-select-hidden-value').val(value);
+            $li.closest('.ranger-select-options-box').addClass('hidden');
+            $li.parent().children().removeClass('text-blue-c0056AB');
+            $li.parent().children().find('img').addClass('hidden');
+
+            $li.addClass('text-blue-c0056AB');
+            $li.find('img').removeClass('hidden');
+
+        }
+
+        function setCalendarDates(){
+
+            /* Define new prototype methods on Date object. */
+            // Returns Date as a String in YYYY-MM-DD format.
+            Date.prototype.toLocaleStringCustom = function () {
+                //return this.toISOString().substr(0,10);
+                return this.toLocaleString('default', { day: '2-digit' }) +' '+this.toLocaleString('default', { month: 'short' });
+            };
+
+            // Returns new Date object offset `n` days from current Date object.
+            Date.prototype.toDateFromDays = function (n) {
+                n = parseInt(n) || 0;
+                let newDate = new Date(this.getTime());
+                newDate.setDate(this.getDate() + n);
+                return newDate;
+            };
+
+            /* Instantiate a Date. */
+            let today = new Date();
+
+            $('.ranger-select-wrap-calendar').find('.ranger-select-options-box li').each(function(){
+
+                let id = $(this).attr('data-text');
+
+                switch (id) {
+                    case 'Today':
+                        $(this).attr('data-start', today.toLocaleStringCustom());
+
+                        const start = $(this).attr('data-start');
+                        let startDay = parseInt(start);
+
+                        if(startDay < 10){
+                            startDay = '0'+startDay;
+                        }
+
+                        $('.dates-chosen .ranger-select-selected').text(start);
+                        $('.dates-chosen .ranger-select-selected').html(function(_, html) {
+                            return html.replace(startDay, '<span class="cf-h-medium">'+startDay+'</span>');
+                        });
+                        break;
+
+                    case 'Last 7 days':
+                        $(this).attr('data-start', today.toDateFromDays(-7).toLocaleStringCustom());
+                        $(this).attr('data-end', today.toLocaleStringCustom());
+                        break;
+
+                    case 'Last 4 weeks':
+                        $(this).attr('data-start', today.toDateFromDays(-28).toLocaleStringCustom());
+                        $(this).attr('data-end', today.toLocaleStringCustom());
+                        break;
+
+                    case 'Last 3 months':
+                        $(this).attr('data-start', today.toDateFromDays(-90).toLocaleStringCustom());
+                        $(this).attr('data-end', today.toLocaleStringCustom());
+                        break;
+
+                    case 'Last 12 months':
+                        $(this).attr('data-start', today.toDateFromDays(-365).toLocaleStringCustom());
+                        $(this).attr('data-end', today.toLocaleStringCustom());
+                        break;
+                
+                    default:
+                        break;
+                }
+
+            });
+
+        }
+
+    </script>
+    
+</body>
+</html>

@@ -78,7 +78,11 @@ module.exports = {
                     cF5F6FA: '#F5F6FA',
                     cbfbfbf: '#bfbfbf',
                     cf4f7f8: '#f4f7f8',
-                    c444444: '#444444'
+                    c444444: '#444444',
+                    cFAFAFA: '#FAFAFA',
+                    cF5F5F5: '#F5F5F5',
+                    cF7F7F7: '#F7F7F7',
+                    c484848: '#484848'
                 },
                 green:{
                     c400: '#04bb66',
@@ -95,7 +99,8 @@ module.exports = {
                     c500: '#0076EB',
                     c0071AD: '#0071AD',
                     cBFDFFF: '#BFDFFF',
-                    cf8fcff: '#f8fcff'
+                    cf8fcff: '#f8fcff',
+                    c0056AB: '#0056AB'
                 },
                 red:{
                     c200:'#ed6a5d',
